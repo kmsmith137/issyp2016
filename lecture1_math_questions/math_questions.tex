@@ -1,0 +1,125 @@
+\documentclass[aps,prd,superscriptaddress,groupedaddress,nofootinbib,nobibnotes]{revtex4}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{mathrsfs}
+% \usepackage{comment}
+% \usepackage{url}
+% \usepackage{wick}
+% \usepackage{feynmp}
+% \usepackage{braket}
+
+\setlength{\parindent}{20pt}
+% \setlength{\parskip}{1mm}
+
+\setcounter{topnumber}{1}    % default value is 2.
+\setcounter{bottomnumber}{0} % default value is 1.
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\newcommand{\kms}[1]{\textcolor{blue}{(KMS: #1)}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\bigoh}{\mathcal{O}}
+
+\newcommand\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$<$}}}
+\newcommand\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$>$}}}
+
+\def\threej#1#2#3#4#5#6{\left( \begin{array}{ccc} #1 & #2 & #3 \\ #4 & #5 & #6 \end{array} \right) }
+\def\smallsum{\mathop{\textstyle\sum}\limits}
+\def\Var{\mbox{Var}}
+\def\Cov{\mbox{Cov}}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+%\title{Some awesome notes}
+%\author{Kendrick~M.~Smith}
+% \affiliation{Perimeter Institute for Theoretical Physics, Waterloo, ON N2L 2Y5, Canada}
+
+% \date{\today}
+
+% \begin{abstract}
+% ABSTRACT HERE
+% \end{abstract}
+% \pacs{}
+
+% \maketitle
+
+\section{Some math questions}
+
+\begin{enumerate}
+\item What is the solution of the system of linear equations
+\ba
+2x + y &=& 6 \nn \\
+x - y &=& -3
+\ea
+\item A fair coin is flipped four times.  What is the probability of two or more heads?
+\item What is the derivative of the function $f(x) = x \sin(2x)$?
+\item What is the integral $\int x \sin(2x) \, dx$?
+\item What is the general solution $y(x)$ of the second-order differential equation
+\be
+\frac{d^2y}{dx^2} + \frac{dy}{dx} - 2 y = 0
+\ee
+\item What is the inverse of the 2-by-2 matrix
+\be
+\left( \begin{array}{cc}
+  2 & 1 \\
+  1 & -1
+\end{array} \right)
+\ee
+What are its eigenvalues and eigenvectors?
+\item Suppose that a fair coin is flipped $N$ times.  Let $H$ be the total number of heads obtained.
+This is an example of a random variable: $H$ can take any value between 0 and $N$,
+and we can try to calculate various expectation values involving $H$.  For example, the expectation value 
+$\langle H \rangle$ of $H$ itself is clearly equal to $(N/2)$.
+
+The variance of the random variable $H$ is defined by
+\be
+\Var(H) = \Big\langle (H - \langle H \rangle)^2 \Big\rangle
+\ee
+The square root $\Var(H)^{1/2}$ is one measure of the ``typical'' size of fluctuations around the mean.
+Calculate $\Var(H)$ as a function of $N$.
+
+\item What is the Fourier transform $\tilde f(k) = \int dx \, f(x) e^{ikx}$ of the function $f(x) = 1/(1+x^2)$?
+\end{enumerate}
+
+%\begin{figure}
+%\centerline{\includegraphics[width=14cm]{x.pdf}}
+%\caption{xxx}
+%\label{fig:xxx}
+%\end{figure}
+
+% \section*{Acknowledgments}
+%
+% Research at Perimeter Institute is supported by the Government of Canada
+% through Industry Canada and by the Province of Ontario through the Ministry of Research \& Innovation.
+% Some computations were performed on the GPC cluster at the SciNet HPC Consortium.
+% SciNet is funded by the Canada Foundation for Innovation under the auspices of Compute Canada,
+% the Government of Ontario, and the University of Toronto.
+% KMS was supported by an NSERC Discovery Grant and an Ontario Early Researcher Award.
+
+% \bibliographystyle{h-physrev}
+% \bibliography{xxx}
+
+% \appendix
+% \section{Appendix}
+
+\end{document}
