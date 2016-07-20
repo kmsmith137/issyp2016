@@ -11,3 +11,4 @@ a theoretical physics summer school for high school students at Perimeter Instit
 
 - Day 4: Relativity
 
+Here is a useful link for learning python: http://openbookproject.net/thinkcs/python/english2e/
