@@ -1,0 +1,205 @@
+\documentclass[aps,prd,superscriptaddress,groupedaddress,nofootinbib,nobibnotes]{revtex4}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{mathrsfs}
+% \usepackage{comment}
+% \usepackage{url}
+% \usepackage{wick}
+% \usepackage{feynmp}
+% \usepackage{braket}
+
+\setlength{\parindent}{20pt}
+% \setlength{\parskip}{1mm}
+
+\setcounter{topnumber}{1}    % default value is 2.
+\setcounter{bottomnumber}{0} % default value is 1.
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\newcommand{\kms}[1]{\textcolor{blue}{(KMS: #1)}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\bigoh}{\mathcal{O}}
+
+\newcommand\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$<$}}}
+\newcommand\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$>$}}}
+
+\def\threej#1#2#3#4#5#6{\left( \begin{array}{ccc} #1 & #2 & #3 \\ #4 & #5 & #6 \end{array} \right) }
+\def\smallsum{\mathop{\textstyle\sum}\limits}
+\def\Var{\mbox{Var}}
+\def\Cov{\mbox{Cov}}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\title{Problems: Gaussian random variables and a little bit of linear algebra}
+
+\author{ISSYP 2016}
+% \affiliation{Perimeter Institute for Theoretical Physics, Waterloo, ON N2L 2Y5, Canada}
+% \date{\today}
+
+% \begin{abstract}
+% ABSTRACT HERE
+% \end{abstract}
+% \pacs{}
+
+\maketitle
+
+\begin{enumerate}
+
+\item {\em Simulating Gaussian random variables.}
+A question which sometimes arises is how to simulate a Gaussian random variable in $N$ dimensions,
+assuming the existence of an algorithm for randomly simulating a one-dimensional Gaussian.\footnote{All
+modern programming lanugages have this built in.  For example, in python you can get a Gaussian random number
+with {\tt numpy.random.standard\_normal()}.}  In this problem we will study this question in the case $N=2$.
+\par\medskip
+(a) 
+Consider a 2-component Gaussian random variable $X_i$, with mean $\bar X_i = 0$ assumed for simplicity,
+and covariance matrix
+\be
+C_{ij} = \langle X_i X_j \rangle = \left( \begin{array}{cc}
+ C_{11} & C_{12} \\
+ C_{12} & C_{22}
+\end{array} \right)
+\ee
+Suppose we simulate independent one-dimensional Gaussian random numbers $u_1, u_2$ with variance $\sigma^2=1$.
+Show that if we define:
+\ba
+X_1 &=& \sqrt{C_{11}} u_1 \nn \\
+X_2 &=& \frac{C_{12}}{\sqrt{C_{11}}} u_1 + \sqrt{ C_{22} - \frac{C_{12}^2}{C_{11}}} u_2  \label{eq:msqrt}
+\ea
+then $\langle X_i X_j \rangle = C_{ij}$.  This is one algorithm for simulating a two-dimensional Gaussian.
+\par\medskip
+(b) More generally, show that a linear transformation of the form $X_i = A_{ij} u_j$ gives covariance
+matrix $\langle X_i X_j \rangle = C_{ij}$ if and only if $C_{ij} = A_{ik} A_{jk}$.\footnote{If this equation
+holds then we say that $A$ is a ``matrix square root'' of $C$.  Thus the problem of simulating multivariate
+Gaussian random numbers is linked to the problem of finding matrix square roots (which turn out to be non-unique).  
+The coefficients given in Eq.~(\ref{eq:msqrt}) are one choice of matrix square root in the 2-by-2 case.}
+\par\medskip
+(c) If you're comfortable with computer programming then try coding this up!  For a specific choice of
+covariance matrix, say $C_{11}=2$, $C_{12}=1$, and $C_{22}=3$, try making random realizations
+of $X_i$ using Eq.~(\ref{eq:msqrt}), and verify that the averages $\langle X_i X_j \rangle$ converge to $C_{ij}$
+in the limit of many realizations.
+
+\item {\em 2-by-2 matrix inversion.} 
+Consider a general 2-by-2 matrix
+\be
+A = \left( \begin{array}{cc}
+  A_{11} & A_{12} \\
+  A_{21} & A_{22}
+\end{array} \right)
+\ee
+Show that the matrix elements of the inverse matrix
+\be
+A^{-1} = \left( \begin{array}{cc}
+  A^{-1}_{11} & A^{-1}_{12} \\
+  A^{-1}_{21} & A^{-1}_{22}
+\end{array} \right)
+\ee
+are given explicitly by
+\ba
+A^{-1}_{11} &=& \frac{A_{22}}{A_{11}A_{22} - A_{12} A_{21}} \nn \\
+A^{-1}_{12} &=& -\frac{A_{12}}{A_{11}A_{22} - A_{12} A_{21}} \nn \\
+A^{-1}_{21} &=& -\frac{A_{21}}{A_{11}A_{22} - A_{12} A_{21}} \nn \\
+A^{-1}_{22} &=& \frac{A_{11}}{A_{11}A_{22} - A_{12} A_{21}}
+\ea
+A brute force approach is to show that the defining condition for the inverse matrix,
+namely $A_{ij} A^{-1}_{jk} = \delta_{ik}$, holds for all four choices of indices $i,k$.
+If you have taken some linear algebra, you may know some machinery which is more efficient
+than the brute force approach -- if so then feel free to use it!
+
+\item {\em Gaussian integrals.} In this problem, you can assume that:
+\be
+\int_{-\infty}^\infty dx \, e^{-x^2} = \sqrt{\pi}
+\ee
+(If you're curious how this is shown, there is a famous trick which is explained in the appendix!)
+\par\medskip
+(a) By change of variable show that
+\be
+\int_{-\infty}^\infty dx \, e^{-ax^2} = \sqrt{\pi} a^{-1/2}  \label{eq:gaussian_a}
+\ee
+where $a > 0$ is a real number.
+\par\medskip
+(b) Now show that 
+\be
+\int_{-\infty}^\infty dx \, x^2 e^{-ax^2} = \frac{\sqrt{\pi}}{2} a^{-3/2}   \label{eq:gaussian_a2}
+\ee
+using one of two possible approaches.  One way is to group the integrand on the LHS as $(x) (x e^{-ax^2})$
+and use integration by parts.  The second way is to differentiate both sides of Eq.~(\ref{eq:gaussian_a})
+with respect to $a$.
+\par\medskip
+(c) Using the previous results show that the Gaussian probability distribution in one variable
+\be
+p(x) = \frac{1}{(2\pi)^{1/2} \sigma} \exp\left( - \frac{x^2}{2\sigma^2} \right)
+\ee
+is correctly normalized (i.e.~$\int p(x) = 1$) with variance $\sigma^2$ 
+(i.e.~$\int x^2 p(x) = \sigma^2$), as implicitly assumed in the lecture.
+\par\medskip
+(d) Can you generalize part (b) to give a formula for $\int x^N e^{-ax^2}$, where $N$ is a positive integer?
+
+\end{enumerate}
+
+
+%\begin{figure}
+%\centerline{\includegraphics[width=14cm]{x.pdf}}
+%\caption{xxx}
+%\label{fig:xxx}
+%\end{figure}
+
+% \section*{Acknowledgments}
+%
+% Research at Perimeter Institute is supported by the Government of Canada
+% through Industry Canada and by the Province of Ontario through the Ministry of Research \& Innovation.
+% Some computations were performed on the GPC cluster at the SciNet HPC Consortium.
+% SciNet is funded by the Canada Foundation for Innovation under the auspices of Compute Canada,
+% the Government of Ontario, and the University of Toronto.
+% KMS was supported by an NSERC Discovery Grant and an Ontario Early Researcher Award.
+
+% \bibliographystyle{h-physrev}
+% \bibliography{xxx}
+
+\appendix
+\section{A famous trick for calculating $\int_{-\infty}^\infty dx e^{-x^2}$}
+
+\par\noindent
+As far as I know, the following strange trick is the only way of doing the integral!
+You'll need to have studied a little bit of multivariate calculus, in particular changing variables from
+Cartesian to polar coordinates in a 2D integral.
+Define:
+\be
+I = \int_{-\infty}^\infty dx \, e^{-x^2}
+\ee
+We can write $I^2$ as a 2D integral over the $(x,y)$ plane.
+\ba
+I^2 &=& \left( \int_{-\infty}^\infty dx \, e^{-x^2} \right) \left( \int_{-\infty}^\infty dy \, e^{-y^2} \right)  \nn \\
+  &=& \int \int dx\, dy \, e^{-x^2-y^2}
+\ea
+This doesn't appear to be making progress, but if we now change variables to polar coordinates $(r,\theta)$,
+then we can do the integral!  (In the steps below, we integrate over $\theta$ first and then $r$.)
+\ba
+I^2 &=& \int dr \, d\theta \, r e^{-r^2}  \nn \\
+    &=& 2 \pi \int_0^\infty dr \, r e^{-r^2} \nn \\
+    &=& 2 \pi \left( \frac{1}{2} \right)
+\ea
+Note that the extra factor of $r$ we picked up in the change of variables to polar coordinates is what
+allows us to do the integral.  Taking the square root on both sides we now get $I = \sqrt{\pi}$ as desired.
+
+\end{document}
