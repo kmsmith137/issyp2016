@@ -65,6 +65,19 @@
 
 \begin{enumerate}
 
+\item {\em Mean and variance for biased coin flips.}
+Recall the following properties of random variables:
+\ba
+\langle X_1 + X_2 \rangle &=& \langle X_1 \rangle + \langle X_2 \rangle \hspace{1cm} \mbox{always} \nn \\
+\langle c X \rangle &=& c \langle X \rangle \hspace{2.15cm} \mbox{if $c$ is constant (i.e.~not a random variable)} \nn \\
+\langle X_1 X_2 \rangle &=& \langle X_1 \rangle \, \langle X_2 \rangle \hspace{1.37cm} \mbox{if $X_1,X_2$ are independent random variables}
+\ea
+(a) Prove that if $X = X_1 + X_2$, where $X_1,X_2$ are independent random variables, then $\Var(X) = \Var(X_1) + \Var(X_2)$.
+\par\medskip
+(b) Consider a biased coin which is heads with probability $p$, and tails with probability $(1-p)$.
+Let $H_1$ be the number of heads after a single flip (either 0 or 1).  What are the mean and variance of the random variable $H_1$?
+Let $H_N$ be the number of heads after $N$ flips.  What are the mean and variance of $H_N$?
+
 \item {\em Simulating Gaussian random variables.}
 A question which sometimes arises is how to simulate a Gaussian random variable in $N$ dimensions,
 assuming the existence of an algorithm for randomly simulating a one-dimensional Gaussian.\footnote{All
