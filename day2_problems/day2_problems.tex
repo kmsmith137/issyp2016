@@ -1,0 +1,212 @@
+\documentclass[aps,prd,superscriptaddress,groupedaddress,nofootinbib,nobibnotes]{revtex4}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+% \usepackage{comment}
+% \usepackage{url}
+% \usepackage{wick}
+% \usepackage{feynmp}
+% \usepackage{braket}
+
+\setlength{\parindent}{20pt}
+% \setlength{\parskip}{1mm}
+
+\setcounter{topnumber}{1}    % default value is 2.
+\setcounter{bottomnumber}{0} % default value is 1.
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\newcommand{\kms}[1]{\textcolor{blue}{(KMS: #1)}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\bigoh}{\mathcal{O}}
+\newcommand{\angstrom}{\mbox{\normalfont\AA}}
+
+\newcommand\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$<$}}}
+\newcommand\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$>$}}}
+
+\def\threej#1#2#3#4#5#6{\left( \begin{array}{ccc} #1 & #2 & #3 \\ #4 & #5 & #6 \end{array} \right) }
+\def\smallsum{\mathop{\textstyle\sum}\limits}
+\def\Var{\mbox{Var}}
+\def\Cov{\mbox{Cov}}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\title{Problems: Expansion history of the universe and differential equations}
+
+\author{ISSYP 2016}
+
+% \begin{abstract}
+% ABSTRACT HERE
+% \end{abstract}
+% \pacs{}
+
+\maketitle
+
+\par\noindent
+Throughout these problems, consider a cosmological expansion history with the following parameters:
+\be
+H_0 = 0.069 \mbox{Gyr}^{-1}
+  \hspace{1cm}
+\Omega_m = 0.31
+  \hspace{1cm}
+\Omega_{\rm rad} = 4.15 \times 10^{-5}
+  \hspace{1cm}
+\Omega_\Lambda = 1 - \Omega_m - \Omega_{\rm rad}
+\ee
+Assume that dark energy is a cosmological constant.
+
+\section{Expanding universe}
+
+\begin{enumerate}
+\item Using Friedmann's equation and the definition of $\Omega_i$, calculate numerical
+  values for the density $\rho_{\rm tot}$ of the universe today, the matter density $\rho_m$
+  today, and the radiation density $\rho_{\rm rad}$ today.
+\item Find expressions for the matter density $\rho_m(a)$, the radition density $\rho_{\rm rad}(a)$,
+  the total density $\rho_{\rm tot}(a)$, and the Hubble parameter $H(a)$, as functions of $a$.  
+  Note that we're using $a$ as the time coordinate here, i.e.~all quantities are evaluated at 
+  a time when the scale factor of the universe is $a$.
+\item Galaxies emit light in a narrow spectral line with wavelength 1216 \AA (the ``Lyman alpha'' line).
+  Consider a distant galaxy which is redshifted so that the line is observed at 2800 \AA.
+  How much has the universe expanded between the time when the light was emitted and now?
+  How much has the total density of the universe $\rho_{\rm tot}$ decreased since then?
+\item What was the scale factor of the universe when the densities of matter and dark energy were equal?
+  When the densities of matter and radiation were equal?
+\end{enumerate}
+  
+\section{Setting up differential equations}
+
+\begin{enumerate}[resume]
+\item {\em Radioactive decay, part 1.} Consider a radioactive sample which decays
+  at the rate $r = 0.0001$ yr$^{-1}$, meaning that in one year, 0.01\% of the sample decays.
+  Write a differential equation for the mass of the sample as a function of time.
+
+\item {\em Radioactive decay, part 2.} Now consider a ``decay chain''.  Suppose that radioactive
+  element $A$ decays to element $B$ with rate $r_1 = 0.0001$ yr$^{-1}$, and element $B$ decays in
+  turn to element $C$ with rate $r_2 = 0.0003$ yr$^{-1}$.  Write differential equations for the
+  masses of samples $A$, $B$, and $C$ as functions of time.
+
+\item {\em Mixing.} Consider a tank which initially contains 100 liters of pure water.
+  At time $t=0$, an input valve is turned on which feeds salt water into the tank.
+  Assume that the salt water instantaneously mixes with the water in the tank, so that the
+  concentration of salt is always uniform throughout the tank.
+  To keep the total volume of water in the talk constant at 100 liters, an output valve
+  is also turned on (at $t=0$) which drains water from the tank at the same rate.
+  Suppose that the rate of water in (and out) of the tank is 0.1 liters per second, and
+  the concentration of salt in the input stream is 100 grams per liter.
+  Write a differential equation for the total mass of salt $M$ in the tank as a function of time.
+
+\item {\em Free-fall with air resistance.} A brick of mass $m = 2$ kg is dropped out of an airplane at 
+  altitude 10000 m.  Recall that the acceleration of the brick due to gravity is 9.8 $m/s^2$.  Assume
+  that the effect of air resistance is to supply a drag force proportional to velocity: $F = kv$,
+  where $k = 0.1$ kg/s.
+  Find differential equations which can be solved to find the location of the brick at time $t$.
+
+\item {\em Roadrunner and coyote.} Consider a ``roadrunner'' who starts at the origin (0,0) of the
+  $(x,y)$ plane, and runs in the $x$-direction at constant velocity 10 $m/s$.  The roadrunner is
+  being chased by a ``coyote'', who starts at the point (0,100) and runs with velocity 12 $m/s$.
+  Assume that the coyote always runs directly toward the roadrunner's instantaneous position.
+  Find differential equations which could be solved to determine how long it takes the roadrunner
+  to catch the coyote.
+\end{enumerate}
+
+\section{Using python}
+
+\begin{enumerate}[resume]
+
+\item Make a length-50 list whose $n$-th element (for $0 \le n < 50$) is equal to $(1.1)^n + 5n^2$.
+
+\item The Fibonacci numbers $F_0=1$, $F_1=1$, $F_2=2$, $F_3=3$, $F_4=5$, $F_5=8$, $\cdots$
+  are defined by the recursion relation $F_n = F_{n-1} + F_{n-2}$.  Write a python program to calculate $F_{50}$.
+
+\item Make a list of 100 numbers $t_i$ uniformly spaced between 0 and $(2\pi)$.
+  Make another length-100 list containing the values of $\cos(t_i)$.  By calling
+  {\tt matplotlib.pyplot.plt()} with these lists as arguments, make a plot of $t$ vs $\cos(t)$.
+
+\item Choose one of the differential equations you derived in the last section, and
+  write a short python program to integrate it and plot the result.
+
+\end{enumerate}
+
+\section{Integrating Friedmann's equation with Python}
+
+Warning: everything in this section is supposed to be a challenge!
+Don't worry if you find it rough going at first.
+
+Friedmann's equation is the differential equation:
+\be
+\frac{da}{dt} = a H(a)
+\ee
+where $H(a)$ has a somewhat messy algebraic form that you derived in question 2 above.
+
+For numerically integrating this equation I suggest making time be the {\em dependent variable}
+and using $\log a$ (not $a$!) as the independent variable.  In other words, your numerical integration
+would take equal steps in $\log a$, and evolve the value of $t$ (the elapsed time since the big bang).
+
+Something which isn't supposed to be obvious, but which you can show 
+\be
+\frac{dt}{d\log a} = \frac{1}{H(a)}
+\ee
+or equivalently, defining $u=\log(a)$ for notational clarity
+\be
+\frac{dt}{du} = \frac{1}{H(e^u)}
+\ee
+Write a python program to integrate this differential equation and tabulate $t$ as a function of $u$.
+Based on your tabulated values, answer the following questions:
+
+\begin{enumerate}[resume]
+\item What is the age of the universe?
+\item Consider the redshifted galaxy from question 3 above.  How long ago was the
+  light from the galaxy emitted?
+\item How different would the age of the universe be if there were no dark energy, but
+   the matter and radiation densities $\rho_m$ and $\rho_{\rm rad}$ were the same?
+\item Determine whether the expansion of the universe is accelerating or decelerating today,
+  by determining whether $da/dt$ is increasing or decreasing with the exapansion.  Would
+  the answer be different if there were no dark energy?
+\item Warning: this one is especially difficult, I'll give some hints tomorrow!
+  What is the comoving size of the universe?  I.e.~if we consider the furthest point we
+  can look back to, how far away is that point today?
+\end{enumerate}
+
+%\begin{figure}
+%\centerline{\includegraphics[width=14cm]{x.pdf}}
+%\caption{xxx}
+%\label{fig:xxx}
+%\end{figure}
+
+% \section*{Acknowledgments}
+%
+% Research at Perimeter Institute is supported by the Government of Canada
+% through Industry Canada and by the Province of Ontario through the Ministry of Research \& Innovation.
+% Some computations were performed on the GPC cluster at the SciNet HPC Consortium.
+% SciNet is funded by the Canada Foundation for Innovation under the auspices of Compute Canada,
+% the Government of Ontario, and the University of Toronto.
+% KMS was supported by an NSERC Discovery Grant and an Ontario Early Researcher Award.
+
+% \bibliographystyle{h-physrev}
+% \bibliography{xxx}
+
+% \appendix
+% \section{Appendix}
+
+\end{document}
