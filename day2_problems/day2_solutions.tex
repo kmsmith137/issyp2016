@@ -1,0 +1,120 @@
+\documentclass[aps,prd,superscriptaddress,groupedaddress,nofootinbib,nobibnotes]{revtex4}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{mathrsfs}
+% \usepackage{comment}
+% \usepackage{url}
+% \usepackage{wick}
+% \usepackage{feynmp}
+% \usepackage{braket}
+
+\setlength{\parindent}{20pt}
+% \setlength{\parskip}{1mm}
+
+\setcounter{topnumber}{1}    % default value is 2.
+\setcounter{bottomnumber}{0} % default value is 1.
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\newcommand{\kms}[1]{\textcolor{blue}{(KMS: #1)}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\bigoh}{\mathcal{O}}
+
+\newcommand\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$<$}}}
+\newcommand\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$>$}}}
+
+\def\threej#1#2#3#4#5#6{\left( \begin{array}{ccc} #1 & #2 & #3 \\ #4 & #5 & #6 \end{array} \right) }
+\def\smallsum{\mathop{\textstyle\sum}\limits}
+\def\Var{\mbox{Var}}
+\def\Cov{\mbox{Cov}}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\title{Setting up differential equations: solutions}
+\author{ISSYP 2016}
+\maketitle
+
+\par\noindent
+Question 5 ``Radioactive decay, part 1'':
+\be
+\frac{dM}{dt} = -10^{-4} M
+\ee
+Question 6 ``Radioactive decay, part 2'':
+\be
+\frac{dA}{dt} = -r_1 A
+   \hspace{1.5cm}
+\frac{dB}{dt} = r_1 A - r_2 B
+   \hspace{1.5cm}
+\frac{dC}{dt} = r_2 B
+\ee
+Question 7 ``Mixing'':
+\be
+\frac{dM}{dt} = (0.1) (100) - (0.1) \frac{M}{100}
+\ee
+Question 8 ``Free-fall with air resistance'', solution 1:
+\be
+\frac{dy}{dt} = v
+   \hspace{1.5cm}
+\frac{dv}{dt} = 9.8 - kv
+\ee
+Question 8 ``Free-fall with air resistance'', solution 2.  Compared to solution 1, this just uses the opposite sign convention for $v$ (either is correct):
+\be
+\frac{dy}{dt} = -v
+   \hspace{1.5cm}
+\frac{dv}{dt} = -9.8 - kv
+\ee
+Question 9 ``Roadrunner and coyote'', solution 1.  This uses three dependent variables: the coordinates $(x_c,y_c)$ of the coyote and the $x$-coordinate $x_r$ of the roadrunner.
+\ba
+\frac{dx_c}{dt} &=& 12 \frac{x_r-x_c}{\sqrt{(x_r-x_c)^2 + y_c^2}} \nn \\
+\frac{dy_c}{dt} &=& -12 \frac{y_c}{\sqrt{(x_r-x_c)^2 + y_c^2}} \nn \\
+\frac{dx_r}{dt} &=& 10
+\ea
+Question 9 ``Roadrunner and coyote'', solution 2.  You can also notice that the roadrunner's position $x_r$ is always equal to $10t$, so we don't need to introduce $x_r$ as
+a dependent variable.  Instead we get a system of differential equations with two dependent variables:
+\ba
+\frac{dx_c}{dt} &=& 12 \frac{10t-x_c}{\sqrt{(10t-x_c)^2 + y_c^2}} \nn \\
+\frac{dy_c}{dt} &=& -12 \frac{y_c}{\sqrt{(10t-x_c)^2 + y_c^2}}
+\ea
+
+%\begin{figure}
+%\centerline{\includegraphics[width=14cm]{x.pdf}}
+%\caption{xxx}
+%\label{fig:xxx}
+%\end{figure}
+
+% \section*{Acknowledgments}
+%
+% Research at Perimeter Institute is supported by the Government of Canada
+% through Industry Canada and by the Province of Ontario through the Ministry of Research \& Innovation.
+% Some computations were performed on the GPC cluster at the SciNet HPC Consortium.
+% SciNet is funded by the Canada Foundation for Innovation under the auspices of Compute Canada,
+% the Government of Ontario, and the University of Toronto.
+% KMS was supported by an NSERC Discovery Grant and an Ontario Early Researcher Award.
+
+% \bibliographystyle{h-physrev}
+% \bibliography{xxx}
+
+% \appendix
+% \section{Appendix}
+
+\end{document}
