@@ -11,7 +11,6 @@ a theoretical physics summer school for high school students at Perimeter Instit
 
 - Day 4: Relativity
 
-Here is a useful link for learning python: http://openbookproject.net/thinkcs/python/english2e/
 
 Here is a link for running small python notebooks online: http://tmpnb.org
 
@@ -22,3 +21,5 @@ Here is a link for running small python notebooks online: http://tmpnb.org
     Note: On my apple laptop, the saved file ends up in the "Downloads" directory.
 
   - To load an old notebook, go to tmpnb.org and do "Upload" instead of "New".
+
+If you want to learn the python language more systematically, here is a nice online textbook!  http://openbookproject.net/thinkcs/python/english2e/
