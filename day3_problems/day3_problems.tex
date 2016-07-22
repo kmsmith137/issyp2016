@@ -1,0 +1,166 @@
+\documentclass[aps,prd,superscriptaddress,groupedaddress,nofootinbib,nobibnotes]{revtex4}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+% \usepackage{comment}
+% \usepackage{url}
+% \usepackage{wick}
+% \usepackage{feynmp}
+% \usepackage{braket}
+
+\setlength{\parindent}{20pt}
+% \setlength{\parskip}{1mm}
+
+\setcounter{topnumber}{1}    % default value is 2.
+\setcounter{bottomnumber}{0} % default value is 1.
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\newcommand{\kms}[1]{\textcolor{blue}{(KMS: #1)}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\bigoh}{\mathcal{O}}
+\newcommand{\angstrom}{\mbox{\normalfont\AA}}
+
+\newcommand\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$<$}}}
+\newcommand\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+        \raise1pt\hbox{$>$}}}
+
+\def\threej#1#2#3#4#5#6{\left( \begin{array}{ccc} #1 & #2 & #3 \\ #4 & #5 & #6 \end{array} \right) }
+\def\smallsum{\mathop{\textstyle\sum}\limits}
+\def\Var{\mbox{Var}}
+\def\Cov{\mbox{Cov}}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\title{Problems: Python, and integrating the expansion history of the universe}
+
+\author{ISSYP 2016}
+
+% \begin{abstract}
+% ABSTRACT HERE
+% \end{abstract}
+% \pacs{}
+
+\maketitle
+
+\section{Python loops}
+
+\begin{enumerate}
+
+\item Write a program which prints the values of $(1/n^2)$ for $n=1,\cdots,20$.
+
+\item There is a math identity (this is not supposed to be obvious, the proof is hard!) which says
+that the infinite series
+\be
+\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \cdots
+\ee
+is equal to $(\pi^2/6)$.  Let's check this result numerically as follows.  Write a loop which calculates the sum to some
+maximum value of $n$, and evaluate the result for $n_{\rm max}$ equal to 10, 100, 1000, and 10000.
+You should be able to see emperically that the result is converging to $\pi^2/^6$.
+
+\item In one of the problems from yesterday (number 3), we figured out how to compute the total density of the universe
+$\rho_{\rm tot}$ at a specific value of $a$ (namely $a=0.43$).  Write a program which prints the density of the universe
+at $a = 0.1, 0.2, \cdots, 0.9, 1$.
+
+\item (Hard) The Fibonacci numbers $F_0=1$, $F_1=1$, $F_2=2$, $F_3=3$, $F_4=5$, $F_5=8$, $\cdots$
+  are defined by the recursion relation $F_n = F_{n-1} + F_{n-2}$.  Write a python program to print the value of $F_{50}$.
+  Can you modify your program to also print the value of $F_0 + F_1 + \cdots + F_{50}$?
+
+\end{enumerate}
+
+\section{Python lists}
+
+\begin{enumerate}[resume]
+
+\item Make a length-50 list whose $n$-th element (for $0 \le n < 50$) is equal to $(1.1)^n + 5n^2$.
+
+\item Make a list of 100 numbers $t_i$ uniformly spaced between 0 and $(2\pi)$.
+  Make another length-100 list containing the values of $\cos(t_i)$.  By calling
+  {\tt matplotlib.pyplot.plt()} with these lists as arguments, make a plot of $t$ vs $\cos(t)$.
+
+\end{enumerate}
+
+\section{Integrating Friedmann's equation with Python}
+
+\par\noindent
+Warning: everything in this section is supposed to be a challenge!
+Don't worry if you find it tough at first.
+
+Friedmann's equation is the differential equation:
+\be
+\frac{da}{dt} = a H(a)
+\ee
+where $H(a)$ has a somewhat messy algebraic form that you derived in question 2 above.
+
+For numerically integrating this equation I suggest making time be the {\em dependent variable}
+and using $\log a$ (not $a$!) as the independent variable.  In other words, your numerical integration
+would take equal steps in $\log a$, and evolve the value of $t$ (the elapsed time since the big bang).
+
+Something which isn't supposed to be obvious, but which you can show if you've taken some calculus,
+is that the form of Friedmann's equations in these variables is:
+\be
+\frac{dt}{d\log a} = \frac{1}{H(a)}
+\ee
+or equivalently, defining $u=\log(a)$ for notational clarity
+\be
+\frac{dt}{du} = \frac{1}{H(e^u)}
+\ee
+Write a python program to integrate this differential equation and tabulate $t$ as a function of $u$.
+Based on your tabulated values, answer the following questions:
+
+\begin{enumerate}[resume]
+\item What is the age of the universe?
+\item Consider the redshifted galaxy from question 3 above.  How long ago was the
+  light from the galaxy emitted?
+\item How different would the age of the universe be if there were no dark energy, but
+   the matter and radiation densities $\rho_m$ and $\rho_{\rm rad}$ were the same?
+\item Determine whether the expansion of the universe is accelerating or decelerating today,
+  by determining whether $da/dt$ is increasing or decreasing with the exapansion.  Would
+  the answer be different if there were no dark energy?
+\item Warning: this one is particularly difficult, I'll give some hints on Monday!
+  What is the comoving size of the universe?  I.e.~if we consider the furthest point we
+  can look back to, how far away is that point today?
+\end{enumerate}
+
+%\begin{figure}
+%\centerline{\includegraphics[width=14cm]{x.pdf}}
+%\caption{xxx}
+%\label{fig:xxx}
+%\end{figure}
+
+% \section*{Acknowledgments}
+%
+% Research at Perimeter Institute is supported by the Government of Canada
+% through Industry Canada and by the Province of Ontario through the Ministry of Research \& Innovation.
+% Some computations were performed on the GPC cluster at the SciNet HPC Consortium.
+% SciNet is funded by the Canada Foundation for Innovation under the auspices of Compute Canada,
+% the Government of Ontario, and the University of Toronto.
+% KMS was supported by an NSERC Discovery Grant and an Ontario Early Researcher Award.
+
+% \bibliographystyle{h-physrev}
+% \bibliography{xxx}
+
+% \appendix
+% \section{Appendix}
+
+\end{document}
