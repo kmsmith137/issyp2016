@@ -1,0 +1,60 @@
+- Give out problems first
+   - Some results will be used later!
+
+- Let's start with the physics
+   - No preferred location (translation symmetry)
+   - No preferred direction (rotation symmetry)
+   - There is a preferred rest frame!
+   - The fundamental quantity: a(t)   draw plot t^{1/2}, t^{2/3}, e^{Ht}  defined so that a=1 today
+   - Comoving observers and spacetime coordinates
+   - Scale factor means "physically measured distances differ from coordinate distances"
+   - Another thing that happens is the redshift: freqs, 
+   - Can use either z, a, t as clocks.
+   - Now let's talk about a very fundamental equation, Friedmann's equation
+   - Remember the definition of H_0!  H=0.069 Gyr^{-1}  The little subscript _0 means...
+     We'll use units gigayear for time everywhere
+   - A very fundamental equation!  H^2 = (8 pi G / 3) rho_{tot}
+      - we'll measure densities in keV/cm^3
+      - this means we want G in these weird units: keV^{-1} cm^3 Gyr^{-2}
+        the numerical value is (1.19e-4) keV^{-1} cm^3 Gyr^{-2}
+   - Evolution of rho_m, rho_rad, rho_Lambda
+   - Time to the big bang is finite!  Can only see a finite part of the universe
+
+
+- Differential equations: basic idea and setup
+
+   - Super simple example: warming up
+       - Glass of water at initial temperature T_0 = 0 C
+       - Ambient temperature is T_a = 20 C.
+       - Assume that the temperatures equalize at the rate of 0.1% per second.
+       - What is the temperature as a function of time?
+       - You may know some tools for answering this question: calculus, diff eqs, etc.
+         but let's think about how we might have a computer calculate it by brute force
+
+        t=0               T=0
+	    dt=0.5          dT = 0.001 * (20) * dt = 0.01
+        t=0.5             T=0.01
+            dt=0.5          dT = 0.001 * (19.99) * dt = 0.009995
+        t=1.0             T=0.019995
+            dt=0.5          dT = 0.001 * (20-0.019995) * dt = 0.009990025
+        t=1.5             T=0.0299850025
+
+
+   - Derivative notation for rates: dT/dt = "change in T per unit t"
+   - dT/dt = 0.001 (T_a - T)
+   - An "indepdendent" variable that you step in (in this case t)
+   - One or more "dependent" variables that you evolve in (in this case T)
+   - For each dependent variable $y$, an equation of the form dy/dx = ...
+   - Initial conditions for all dependent variables
+   - Choosing timescales is tricky
+   - If you know calculus, let me comment that you can solve the differential equation
+   - For now, just think of it as a blueprint for stepping forward in time on the computer
+   - A lot of the time this is all we can do!
+   - Most important equations in physics are differential equations
+
+   - A situation where you might end up with two dependent variables: position and velocity
+      - Mass m, spring constant k, friction coefficient mu
+
+   - Another example from finance: compound interest + linear withdrawls
+
+

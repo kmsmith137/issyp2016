@@ -1,0 +1,46 @@
+- Rehash differential equations
+
+- Programming
+    tmpnb.org
+     - Choose python2
+     - Warning: not really intended for long-term use so it will be a little clunky
+
+  Python intro
+    - I'll only teach a small subset of the python language, there is a huge amount to learn!
+    - Print 'hello'
+    - Print 2
+    - Print 2.3
+    - Comma-separated print
+    - Calculator-like operation
+        - Operators: 2+2
+        - Watch out for division!
+    - Assignment operators.  As an example let's look at this notebook.
+        - Do the example of problem 1
+ 	- Turn students loose for a while
+
+    - Now is a good time to mention save/restore
+
+    - While loops
+       - Boolean predicates
+       - Examples to illustrate
+          - Print hello N times
+	  - With loop counter
+          - Example with a floating-point counter
+	     - Roundoff error
+	  - Add up all the numbers from 1 to n and print the result
+	  - You can put as much computation as you want inside the loop.  The loop ends when you change the indentation
+
+    - Lists
+       - Zero indexed
+       - Indexing
+       - Append
+       - len(l)
+
+    - Math functions are in numpy
+    - Plotting is in matplotlib
+    - More problems
+    
+    - Now a differential equation
+    - Your turn...
+
+

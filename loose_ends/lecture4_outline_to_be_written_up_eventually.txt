@@ -1,0 +1,37 @@
+- just for fun let me tell you about chime
+   - traditional radio telescope, e.g. gbt
+   - interferometer
+   - 1000 gbt's!
+   - an experiment in using big networks of commodity computing, really pushing hardware to its limit
+   - challenge: software!!
+   - pulsar backend, timing known pulsars for gravity waves
+   - fast radio bursts, currently a mystery
+   - cosmology backend
+
+
+- comment on python: I'm just showing you a minimal functionally complete subset of the syntax
+
+- a few more python language features
+   - indexing a list
+   - len(l)
+   - a loop which searches a list
+
+
+- let's talk about the project
+   - schedule/format?
+
+   - timeline of the universe
+       - age of the universe at matter-radiation equality
+       - age of the universe when the CMB is generated
+       - age of the universe at matter-Lambda equality
+       - age of the universe today
+       - what will happen in the future
+
+- postmortem
+   - what will happen in the future?
+
+   - one thing you might mention in the poster: dark energy modifies the sign
+       - accelerating universe observed in 1994
+
+   - age of the universe is finite, so is the size of the observable universe
+   - this is a sign that the big bang model is incomplete
