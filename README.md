@@ -3,13 +3,13 @@
 These are notes from [ISSYP](http://www.perimeterinstitute.ca/outreach/students/programs/international-summer-school-young-physicists),
 a theoretical physics summer school for high school students at Perimeter Institute.
 
-- Day 1: Gaussian random variables and a little bit of linear algebra
+- Day 1: Standard cosmological model, Gaussian random variables
 
-- Day 2: Random fields, Fourier transforms, and power spectra
+- Day 2: Expanding universe, differential equations
 
-- Day 3: The CMB power spectrum and the Fisher matrix
+- Day 3: Python intro, numerically integrating differential equations
 
-- Day 4: Relativity
+- Day 4: Project 
 
 
 Here is a link for running small python notebooks online: http://tmpnb.org
